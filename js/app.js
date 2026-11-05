@@ -8,6 +8,9 @@ import { createScreenWakeLock } from './screen-wake-lock.js';
 import { createStorage } from './storage.js';
 
 const app = document.querySelector('#app');
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
 const userAgent = navigator.userAgent;
 const isSafari = /Safari/i.test(userAgent) && !/(Chrome|Chromium|CriOS|Edg|EdgiOS|OPR|OPiOS|FxiOS|Firefox|Android)/i.test(userAgent);
 const readerFloatDuration = isSafari ? 2000 : 931;
@@ -524,6 +527,7 @@ async function route() {
   const scrollArticleToTop = state.scrollArticleToTop;
   state.scrollArticleToTop = false;
   articleSpeech.stop();
+  window.scrollTo({ top: 0, behavior: 'auto' });
   const [, routeName, id] = location.hash.match(/^#\/(\w+)(?:\/([^/?#]+))?/) || [];
   try {
     await libraryData.loadBooks();

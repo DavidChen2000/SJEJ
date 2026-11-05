@@ -1,5 +1,5 @@
 const CACHE_PREFIX = 'sjej-';
-const CACHE_NAME = 'sjej-v01';
+const CACHE_NAME = 'sjej-v02';
 const APP_SHELL = ['./', './index.html', './manifest.json', './css/app.css', './js/app.js', './icons/icon-192.png', './icons/icon-512.png', './data/books.json', './data/volume01.json'];
 const APP_SHELL_PATHS = new Set(APP_SHELL.map((path) => new URL(path, self.registration.scope).pathname));
 
