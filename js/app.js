@@ -49,7 +49,7 @@ async function renderHome() {
   app.innerHTML = `
     <section class="home-shell">
       <div class="home-intro">
-        <div><p class="eyebrow">READING ROOM</p><h1>屬靈的判定與判定的實例</h1><p class="lead">屬靈的判定與判定的實例，讓神的話陪伴每天的靈修時刻。</p></div>
+        <div><p class="eyebrow">READING ROOM</p><h1>屬靈的判定與判定的實例</h1><p class="lead">讓神的話語陪伴每天的靈修時刻。</p></div>
         ${resume ? `<a class="resume-link" href="#/article/${encodeURIComponent(lastRead.articleId)}"><small>接續閱讀 · ${esc(resume.title)}</small><strong>${esc(lastRead.title)}　→</strong></a>` : ''}
       </div>
       <div class="search-panel">
