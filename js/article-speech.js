@@ -1,5 +1,5 @@
 // 封裝文章朗讀狀態、瀏覽器語音 API 與目前段落的提示狀態。
-export function createArticleSpeechController(getCurrentArticle, onStatusChange = () => {}) {
+export function createArticleSpeechController(getCurrentArticle, onStatusChange = () => { }) {
   let speechSession = { token: 0, chunks: [], index: 0, charIndex: 0, status: 'idle' };
 
   function updateSpeechButton() {
@@ -77,7 +77,13 @@ export function createArticleSpeechController(getCurrentArticle, onStatusChange 
 
   function setActiveParagraph(index) {
     document.querySelectorAll('.article-body [data-speech-active]').forEach((paragraph) => paragraph.removeAttribute('data-speech-active'));
-    document.querySelector(`.article-body [data-speech-index="${index}"]`)?.setAttribute('data-speech-active', 'true');
+    const paragraph = document.querySelector(`.article-body [data-speech-index="${index}"]`);
+    if (!paragraph) return;
+    paragraph.setAttribute('data-speech-active', 'true');
+    paragraph.scrollIntoView({
+      behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+      block: 'center',
+    });
   }
 
   function speakNextChunk(token) {
